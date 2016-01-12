@@ -1,0 +1,6 @@
+lk-sonar:
+  container_name: lk-sonar
+  image: sonarqube:4.5.6
+  ports:
+    - "9000:9000"
+    - "9092:9092"
