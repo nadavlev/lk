@@ -1,0 +1,180 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myShortLinkLabel" translate="lkApp.shortLink.home.createOrEditLabel">Create or edit a ShortLink</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="shortLink.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="shortLink.name"
+                    required ng-minlength="3" ng-maxlength="60" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="60">
+                    This field cannot be longer than 60 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.destination" for="field_destination">Destination</label>
+            <input type="text" class="form-control" name="destination" id="field_destination"
+                    ng-model="shortLink.destination"
+                    required ng-minlength="4" />
+            <div ng-show="editForm.destination.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.destination.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.destination.$error.minlength" translate="entity.validation.minlength" translate-value-min="4">
+                    This field is required to be at least 4 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.creationDate" for="field_creationDate">CreationDate</label>
+            <input id="field_creationDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="shortLink.creationDate" is-open="datePickerForCreationDate.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreationDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.creationDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.creationDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.updateDate" for="field_updateDate">UpdateDate</label>
+            <input id="field_updateDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="shortLink.updateDate" is-open="datePickerForUpdateDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForUpdateDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="shortLink.description"
+                    ng-maxlength="500" />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="500">
+                    This field cannot be longer than 500 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.state" for="field_state">State</label>
+            <input type="number" class="form-control" name="state" id="field_state"
+                    ng-model="shortLink.state"
+                    required min="1" max="3" />
+            <div ng-show="editForm.state.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.state.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.min" translate="entity.validation.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.max" translate="entity.validation.max" translate-value-max="3">
+                    This field cannot be more than 3.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.shortLink" for="field_shortLink">ShortLink</label>
+            <input type="text" class="form-control" name="shortLink" id="field_shortLink"
+                    ng-model="shortLink.shortLink"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.totalClicks" for="field_totalClicks">TotalClicks</label>
+            <input type="number" class="form-control" name="totalClicks" id="field_totalClicks"
+                    ng-model="shortLink.totalClicks"
+                    min="0" />
+            <div ng-show="editForm.totalClicks.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalClicks.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalClicks.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.lastClickDate" for="field_lastClickDate">LastClickDate</label>
+            <input id="field_lastClickDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="shortLink.lastClickDate" is-open="datePickerForLastClickDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForLastClickDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.indexOfKeys" for="field_indexOfKeys">IndexOfKeys</label>
+            <input type="text" class="form-control" name="indexOfKeys" id="field_indexOfKeys"
+                    ng-model="shortLink.indexOfKeys"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.shortLink.timeout" for="field_timeout">Timeout</label>
+            <input type="number" class="form-control" name="timeout" id="field_timeout"
+                    ng-model="shortLink.timeout"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="lkApp.shortLink.creationUser" for="field_creationUser">creationUser</label>
+            <select class="form-control" id="field_creationUser" name="creationUser" ng-model="shortLink.creationUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.shortLink.updateUser" for="field_updateUser">updateUser</label>
+            <select class="form-control" id="field_updateUser" name="updateUser" ng-model="shortLink.updateUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.shortLink.urlGroup" for="field_urlGroup">urlGroup</label>
+            <select class="form-control" id="field_urlGroup" name="urlGroup" ng-model="shortLink.urlGroup" ng-options="urlGroup as urlGroup.name for urlGroup in urlgroups track by urlGroup.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

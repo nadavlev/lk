@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity ShortLink.
+    -->
+    <changeSet id="20160116194446" author="jhipster">
+        <createTable tableName="short_link">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(60)">
+                <constraints nullable="false" />
+            </column>
+            <column name="destination" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="creation_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="update_date" type="date"/>
+            <column name="description" type="varchar(500)"/>
+            <column name="state" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="short_link" type="varchar(255)"/>
+            <column name="total_clicks" type="bigint"/>
+            <column name="last_click_date" type="date"/>
+            <column name="index_of_keys" type="varchar(255)"/>
+            <column name="timeout" type="bigint"/>
+            <column name="creation_user_id" type="bigint"/>
+            <column name="update_user_id" type="bigint"/>
+            <column name="url_group_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="creation_user_id"
+                                 baseTableName="short_link"
+                                 constraintName="fk_shortlink_creationuser_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="update_user_id"
+                                 baseTableName="short_link"
+                                 constraintName="fk_shortlink_updateuser_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="url_group_id"
+                                 baseTableName="short_link"
+                                 constraintName="fk_shortlink_urlgroup_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="url_group"/>
+
+    </changeSet>
+</databaseChangeLog>

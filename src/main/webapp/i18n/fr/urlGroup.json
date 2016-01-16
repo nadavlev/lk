@@ -1,0 +1,31 @@
+{
+    "lkApp": {
+        "urlGroup" : {
+            "home": {
+                "title": "UrlGroups",
+                "createLabel": "Créer un nouveau UrlGroup",
+                "createOrEditLabel": "Créer ou éditer un UrlGroup"
+            },
+            "created": "Un nouveau UrlGroup a été créé avec l'identifiant {{ param }}",
+            "updated": "Le UrlGroup avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le UrlGroup avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le UrlGroup {{ id }} ?"
+            },
+            "detail": {
+                "title": "UrlGroup"
+            },
+            "name": "Name",
+            "creationDate": "CreationDate",
+            "updateDate": "UpdateDate",
+            "description": "Description",
+            "state": "State",
+            "mainAddress": "MainAddress",
+            "creationUser": "CreationUser",
+            "updateUser": "UpdateUser",
+            "account": "Account",
+            "shortLinks": "ShortLinks"
+        }
+    }
+}
+

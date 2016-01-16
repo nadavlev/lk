@@ -1,0 +1,34 @@
+{
+    "lkApp": {
+        "shortLink" : {
+            "home": {
+                "title": "ShortLinks",
+                "createLabel": "Create a new ShortLink",
+                "createOrEditLabel": "Create or edit a ShortLink"
+            },
+            "created": "A new ShortLink is created with identifier {{ param }}",
+            "updated": "A ShortLink is updated with identifier {{ param }}",
+            "deleted": "A ShortLink is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ShortLink {{ id }}?"
+            },
+            "detail": {
+                "title": "ShortLink"
+            },
+            "name": "Name",
+            "destination": "Destination",
+            "creationDate": "CreationDate",
+            "updateDate": "UpdateDate",
+            "description": "Description",
+            "state": "State",
+            "shortLink": "ShortLink",
+            "totalClicks": "TotalClicks",
+            "lastClickDate": "LastClickDate",
+            "indexOfKeys": "IndexOfKeys",
+            "timeout": "Timeout",
+            "creationUser": "CreationUser",
+            "updateUser": "UpdateUser",
+            "urlGroup": "UrlGroup"
+        }
+    }
+}

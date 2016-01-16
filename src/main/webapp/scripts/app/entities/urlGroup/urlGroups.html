@@ -1,0 +1,73 @@
+<div>
+    <h2 translate="lkApp.urlGroup.home.title">UrlGroups</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="urlGroup.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="lkApp.urlGroup.home.createLabel">Create a new UrlGroup</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="lkApp.urlGroup.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="lkApp.urlGroup.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updateDate"><span translate="lkApp.urlGroup.updateDate">UpdateDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="lkApp.urlGroup.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span translate="lkApp.urlGroup.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainAddress"><span translate="lkApp.urlGroup.mainAddress">MainAddress</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationUser.login"><span translate="lkApp.urlGroup.creationUser">creationUser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updateUser.login"><span translate="lkApp.urlGroup.updateUser">updateUser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="account.name"><span translate="lkApp.urlGroup.account">account</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="urlGroup in urlGroups track by urlGroup.id">
+                    <td><a ui-sref="urlGroup.detail({id:urlGroup.id})">{{urlGroup.id}}</a></td>
+                    <td>{{urlGroup.name}}</td>
+                        <td>{{urlGroup.creationDate | date:'mediumDate'}}</td>
+                        <td>{{urlGroup.updateDate | date:'mediumDate'}}</td>
+                    <td>{{urlGroup.description}}</td>
+                    <td>{{urlGroup.state}}</td>
+                    <td>{{urlGroup.mainAddress}}</td>
+                    <td>
+                        {{urlGroup.creationUser.login}}
+                    </td>
+                    <td>
+                        {{urlGroup.updateUser.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="lkAccount.detail({id:urlGroup.account.id})">{{urlGroup.account.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="urlGroup.detail({id:urlGroup.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="urlGroup.edit({id:urlGroup.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="urlGroup.delete({id:urlGroup.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

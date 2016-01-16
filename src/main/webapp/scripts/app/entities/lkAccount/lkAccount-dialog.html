@@ -1,0 +1,128 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myLkAccountLabel" translate="lkApp.lkAccount.home.createOrEditLabel">Create or edit a LkAccount</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="lkAccount.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="lkAccount.name"
+                    required ng-minlength="3" ng-maxlength="50" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.creationDate" for="field_creationDate">CreationDate</label>
+            <input id="field_creationDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="lkAccount.creationDate" is-open="datePickerForCreationDate.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreationDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.creationDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.creationDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.updateDate" for="field_updateDate">UpdateDate</label>
+            <input id="field_updateDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="lkAccount.updateDate" is-open="datePickerForUpdateDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForUpdateDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="lkAccount.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.state" for="field_state">State</label>
+            <input type="number" class="form-control" name="state" id="field_state"
+                    ng-model="lkAccount.state"
+                    required min="1" max="3" />
+            <div ng-show="editForm.state.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.state.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.min" translate="entity.validation.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.max" translate="entity.validation.max" translate-value-max="3">
+                    This field cannot be more than 3.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.lkAccount.isDefault" for="field_isDefault">IsDefault</label>
+            <input type="checkbox" class="form-control" name="isDefault" id="field_isDefault"
+                    ng-model="lkAccount.isDefault"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="lkApp.lkAccount.creationUser" for="field_creationUser">creationUser</label>
+            <select class="form-control" id="field_creationUser" name="creationUser" ng-model="lkAccount.creationUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.lkAccount.updateUser" for="field_updateUser">updateUser</label>
+            <select class="form-control" id="field_updateUser" name="updateUser" ng-model="lkAccount.updateUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.lkAccount.manager" for="field_manager">manager</label>
+            <select class="form-control" id="field_manager" name="manager" ng-model="lkAccount.manager" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.lkAccount.owner" for="field_owner">owner</label>
+            <select class="form-control" id="field_owner" name="owner" ng-model="lkAccount.owner" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

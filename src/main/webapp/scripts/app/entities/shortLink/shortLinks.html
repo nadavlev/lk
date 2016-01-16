@@ -1,0 +1,83 @@
+<div>
+    <h2 translate="lkApp.shortLink.home.title">ShortLinks</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="shortLink.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="lkApp.shortLink.home.createLabel">Create a new ShortLink</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="lkApp.shortLink.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="destination"><span translate="lkApp.shortLink.destination">Destination</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationDate"><span translate="lkApp.shortLink.creationDate">CreationDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updateDate"><span translate="lkApp.shortLink.updateDate">UpdateDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="lkApp.shortLink.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span translate="lkApp.shortLink.state">State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="shortLink"><span translate="lkApp.shortLink.shortLink">ShortLink</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalClicks"><span translate="lkApp.shortLink.totalClicks">TotalClicks</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastClickDate"><span translate="lkApp.shortLink.lastClickDate">LastClickDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="indexOfKeys"><span translate="lkApp.shortLink.indexOfKeys">IndexOfKeys</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timeout"><span translate="lkApp.shortLink.timeout">Timeout</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creationUser.login"><span translate="lkApp.shortLink.creationUser">creationUser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updateUser.login"><span translate="lkApp.shortLink.updateUser">updateUser</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="urlGroup.name"><span translate="lkApp.shortLink.urlGroup">urlGroup</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="shortLink in shortLinks track by shortLink.id">
+                    <td><a ui-sref="shortLink.detail({id:shortLink.id})">{{shortLink.id}}</a></td>
+                    <td>{{shortLink.name}}</td>
+                    <td>{{shortLink.destination}}</td>
+                        <td>{{shortLink.creationDate | date:'mediumDate'}}</td>
+                        <td>{{shortLink.updateDate | date:'mediumDate'}}</td>
+                    <td>{{shortLink.description}}</td>
+                    <td>{{shortLink.state}}</td>
+                    <td>{{shortLink.shortLink}}</td>
+                    <td>{{shortLink.totalClicks}}</td>
+                        <td>{{shortLink.lastClickDate | date:'mediumDate'}}</td>
+                    <td>{{shortLink.indexOfKeys}}</td>
+                    <td>{{shortLink.timeout}}</td>
+                    <td>
+                        {{shortLink.creationUser.login}}
+                    </td>
+                    <td>
+                        {{shortLink.updateUser.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="urlGroup.detail({id:shortLink.urlGroup.id})">{{shortLink.urlGroup.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="shortLink.detail({id:shortLink.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="shortLink.edit({id:shortLink.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="shortLink.delete({id:shortLink.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

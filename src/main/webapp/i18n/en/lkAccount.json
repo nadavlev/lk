@@ -1,0 +1,30 @@
+{
+    "lkApp": {
+        "lkAccount" : {
+            "home": {
+                "title": "LkAccounts",
+                "createLabel": "Create a new LkAccount",
+                "createOrEditLabel": "Create or edit a LkAccount"
+            },
+            "created": "A new LkAccount is created with identifier {{ param }}",
+            "updated": "A LkAccount is updated with identifier {{ param }}",
+            "deleted": "A LkAccount is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete LkAccount {{ id }}?"
+            },
+            "detail": {
+                "title": "LkAccount"
+            },
+            "name": "Name",
+            "creationDate": "CreationDate",
+            "updateDate": "UpdateDate",
+            "description": "Description",
+            "state": "State",
+            "isDefault": "IsDefault",
+            "creationUser": "CreationUser",
+            "updateUser": "UpdateUser",
+            "manager": "Manager",
+            "owner": "Owner"
+        }
+    }
+}

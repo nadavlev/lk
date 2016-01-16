@@ -1,0 +1,146 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUrlGroupLabel" translate="lkApp.urlGroup.home.createOrEditLabel">Create or edit a UrlGroup</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="urlGroup.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="urlGroup.name"
+                    required ng-minlength="3" ng-maxlength="60" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="60">
+                    This field cannot be longer than 60 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.creationDate" for="field_creationDate">CreationDate</label>
+            <input id="field_creationDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="urlGroup.creationDate" is-open="datePickerForCreationDate.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreationDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.creationDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.creationDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.updateDate" for="field_updateDate">UpdateDate</label>
+            <input id="field_updateDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="urlGroup.updateDate" is-open="datePickerForUpdateDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForUpdateDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="urlGroup.description"
+                    ng-maxlength="500" />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="500">
+                    This field cannot be longer than 500 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.state" for="field_state">State</label>
+            <input type="number" class="form-control" name="state" id="field_state"
+                    ng-model="urlGroup.state"
+                    required min="1" max="3" />
+            <div ng-show="editForm.state.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.state.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.min" translate="entity.validation.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.max" translate="entity.validation.max" translate-value-max="3">
+                    This field cannot be more than 3.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="lkApp.urlGroup.mainAddress" for="field_mainAddress">MainAddress</label>
+            <input type="text" class="form-control" name="mainAddress" id="field_mainAddress"
+                    ng-model="urlGroup.mainAddress"
+                    required ng-minlength="4" ng-maxlength="60" ng-pattern="/^[a-zA-Z0-9]*$/" />
+            <div ng-show="editForm.mainAddress.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainAddress.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainAddress.$error.minlength" translate="entity.validation.minlength" translate-value-min="4">
+                    This field is required to be at least 4 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainAddress.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="60">
+                    This field cannot be longer than 60 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainAddress.$error.pattern" translate="entity.validation.pattern" translate-value-pattern="^[a-zA-Z0-9]*$">
+                    This field should follow pattern "^[a-zA-Z0-9]*$".
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="lkApp.urlGroup.creationUser" for="field_creationUser">creationUser</label>
+            <select class="form-control" id="field_creationUser" name="creationUser" ng-model="urlGroup.creationUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.urlGroup.updateUser" for="field_updateUser">updateUser</label>
+            <select class="form-control" id="field_updateUser" name="updateUser" ng-model="urlGroup.updateUser" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="lkApp.urlGroup.account" for="field_account">account</label>
+            <select class="form-control" id="field_account" name="account" ng-model="urlGroup.account" ng-options="lkAccount as lkAccount.name for lkAccount in lkaccounts track by lkAccount.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

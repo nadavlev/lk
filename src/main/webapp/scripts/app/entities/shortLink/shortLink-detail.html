@@ -1,0 +1,134 @@
+
+<div>
+    <h2><span translate="lkApp.shortLink.detail.title">ShortLink</span> {{shortLink.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.destination">Destination</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.destination}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.creationDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.updateDate">UpdateDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.updateDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.state">State</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.state}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.shortLink">ShortLink</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.shortLink}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.totalClicks">TotalClicks</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.totalClicks}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.lastClickDate">LastClickDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.lastClickDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.indexOfKeys">IndexOfKeys</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.indexOfKeys}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.timeout">Timeout</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{shortLink.timeout}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.creationUser">creationUser</span>
+                </td>
+                <td>
+                    {{shortLink.creationUser.login}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.updateUser">updateUser</span>
+                </td>
+                <td>
+                    {{shortLink.updateUser.login}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.shortLink.urlGroup">urlGroup</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="urlGroup.detail({id:shortLink.urlGroup.id})">{{shortLink.urlGroup.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

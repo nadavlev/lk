@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="lkApp.urlGroup.detail.title">UrlGroup</span> {{urlGroup.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.creationDate">CreationDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.creationDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.updateDate">UpdateDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.updateDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.state">State</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.state}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.mainAddress">MainAddress</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{urlGroup.mainAddress}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.creationUser">creationUser</span>
+                </td>
+                <td>
+                    {{urlGroup.creationUser.login}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.updateUser">updateUser</span>
+                </td>
+                <td>
+                    {{urlGroup.updateUser.login}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="lkApp.urlGroup.account">account</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="lkAccount.detail({id:urlGroup.account.id})">{{urlGroup.account.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
